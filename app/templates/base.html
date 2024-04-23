@@ -9,12 +9,19 @@
     {% endif %}
   </head>
   <body>
-    <div> <!-- This is the div that contains the navigation bar -->
+    <div>
+      <!-- This is the div that contains the navigation bar -->
       Microblog:
       <a href="/index">Home</a>
       <a href="/login">Login</a>
     </div>
     <hr />
-    {% block content %} {% endblock %}
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %} {% block content %} {% endblock %}
   </body>
 </html>
